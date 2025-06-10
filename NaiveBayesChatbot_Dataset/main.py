@@ -1,11 +1,13 @@
 from nlp.response_selector import ResponseSelector
 import os
-import train
+import train # Import module train để gọi train.main()
 
-base_dir = r'D:\Python\ChatBotAI\mid_range_chatbot\NaiveBayesChatbot_Dataset'
+# Sửa: Đặt base_dir là '.' để trỏ đến thư mục hiện tại của Colab
+base_dir = '.'
 
 if __name__ == "__main__":
     classifier = train.main()  # train và lấy classifier
+    # data_path cho responses_selector sẽ được xây dựng đúng cách từ base_dir
     responses_path = os.path.join(base_dir, 'data', 'processed', 'intent_responses.json')
     selector = ResponseSelector(responses_path)
 
